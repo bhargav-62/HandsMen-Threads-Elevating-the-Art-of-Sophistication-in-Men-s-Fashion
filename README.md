@@ -2,119 +2,184 @@
 
 ## 📌 Project Overview
 
-HandsMen Threads is a Salesforce CRM solution designed to manage and automate the operations of a men's fashion business.
+HandsMen Threads is a Salesforce CRM project developed to manage and automate the core business operations of a men's fashion organization.
 
-The project provides a centralized system for managing customers, products, orders, inventory, and marketing campaigns. Salesforce automation is used to improve order processing, inventory management, customer loyalty, and business operations.
+The system provides a centralized platform for managing customers, products, orders, inventory, and marketing campaigns. Salesforce automation, security, Flow, and Apex are used to improve business efficiency and maintain accurate data.
 
-## 🎯 Objectives
+---
 
-- Manage customer information efficiently
+## 🎯 Project Objectives
+
+- Manage customer information
 - Manage products and inventory
 - Track customer orders
-- Maintain accurate inventory levels
-- Automate customer loyalty status updates
-- Automate order confirmation notifications
+- Maintain accurate stock levels
+- Automate customer loyalty status
+- Automate order confirmation
 - Generate low-stock inventory alerts
-- Provide controlled access to users based on their roles and profiles
+- Provide role-based access to users
+- Improve overall CRM management
+
+---
 
 ## 🛠️ Technologies Used
 
 - Salesforce CRM
 - Salesforce Lightning
-- Custom Objects
-- Custom Fields
-- Validation Rules
-- Formula Fields
-- Lookup Relationships
-- Master-Detail Relationship
-- Lightning App
-- Profiles and Roles
-- Permission Sets
-- Salesforce Flows
+- Salesforce Flow
 - Apex
 - Batch Apex
 - Scheduled Apex
-- Git & GitHub
+- Custom Objects
+- Custom Fields
+- Formula Fields
+- Validation Rules
+- Lookup Relationships
+- Master-Detail Relationships
+- Profiles
+- Roles
+- Permission Sets
+- Git
+- GitHub
+- VS Code
+- Salesforce CLI
 
-## 📊 Salesforce Data Model
+---
 
-The project contains the following custom objects:
+## 📦 Custom Objects
 
-- **HandsMen Customer**
-- **HandsMen Product**
-- **HandsMen Order**
-- **Inventory**
-- **Marketing Campaign**
+The project includes the following custom Salesforce objects:
 
-### Key Relationships
+1. **HandsMen Customer**
+2. **HandsMen Product**
+3. **HandsMen Order**
+4. **Inventory**
+5. **Marketing Campaign**
+
+---
+
+## 🔗 Object Relationships
+
+The project uses Salesforce relationships to connect business data.
 
 - Marketing Campaign → HandsMen Customer
 - HandsMen Product → HandsMen Order
 - HandsMen Order → HandsMen Customer
 - Inventory → HandsMen Product
 
-## ⚙️ Automation
+The Inventory-to-Product relationship uses a **Master-Detail Relationship**, while the other relationships use **Lookup Relationships**.
 
-### 1. Customer Loyalty Automation
+---
 
-A scheduled Salesforce Flow automatically updates customer loyalty status based on total purchases:
+## ⚡ Salesforce Automation
+
+### 1. Customer Loyalty Status Automation
+
+A scheduled Flow automatically updates customer loyalty status based on total purchases.
 
 | Total Purchases | Loyalty Status |
 |---|---|
 | Greater than 1000 | Gold |
 | Less than 500 | Bronze |
-| 500 – 1000 | Silver |
+| 500 to 1000 | Silver |
 
-### 2. Order Confirmation
+The Flow runs on a scheduled basis and updates customer records automatically.
 
-An automated flow sends an order confirmation notification when an order is confirmed.
+### 2. Order Confirmation Automation
+
+An automated Flow is used to process order confirmation and send an order confirmation notification.
 
 ### 3. Inventory Stock Alert
 
-A flow is used to identify low-stock inventory and trigger a stock alert.
+A Flow is implemented to identify low-stock inventory and generate a stock alert.
 
-### 4. Inventory Batch Processing
+---
 
-A Batch Apex and Schedulable Apex process is implemented for inventory management and scheduled execution.
+## 💻 Apex Development
+
+The project includes Apex components for business automation and inventory processing.
+
+### Apex Classes
+
+- `InventoryBatchJob`
+- `OrderTriggerHandler`
+
+### Apex Trigger
+
+- `OrderTrigger`
+
+### Batch Apex
+
+`InventoryBatchJob` implements Batchable and Schedulable Apex to process inventory records and execute inventory-related operations in batches.
+
+---
+
+## 📧 Email Automation
+
+An email template named:
+
+**Order Confirmation Email**
+
+is implemented to notify customers when their order has been confirmed.
+
+The project also includes a stock alert automation for inventory management.
+
+---
 
 ## 🔐 Security and Access
 
-The project uses Salesforce security features including:
+Salesforce security features are used to control access to the application.
+
+The project includes:
 
 - Roles
 - Profiles
 - Permission Sets
 - Object-Level Permissions
 
-A custom **Platform 1** profile was created with appropriate permissions for HandsMen Products and Inventory.
+A custom profile named **Platform 1** is used for appropriate access to HandsMen Products and Inventory.
 
-## ✅ Validation Rules
+---
+
+## ✅ Data Validation
 
 Validation rules are implemented to maintain data accuracy.
 
-Examples include:
+### Inventory
 
-- Inventory quantity cannot be less than or equal to zero
-- Customer email must contain `@gmail.com`
-- Order total amount must be greater than zero
+Inventory quantity cannot be less than or equal to zero.
 
-## 📧 Email Automation
+### Customer
 
-An order confirmation email template is implemented:
+Customer email must contain the required Gmail format.
 
-**Order Confirmation Email**
+### Order
 
-It is used to notify customers when their order has been confirmed.
+Order total amount must be greater than zero.
 
-## 💻 Apex Components
+---
 
-The project includes:
+## 📊 Lightning Application
 
-- `InventoryBatchJob`
-- `OrderTriggerHandler`
-- `OrderTrigger`
+A custom Salesforce Lightning application named:
 
-These components support inventory processing and order-related automation.
+**HandsMen Threads**
+
+provides centralized navigation for the project.
+
+The application includes access to:
+
+- HandsMen Customers
+- HandsMen Products
+- HandsMen Orders
+- Inventory
+- Marketing Campaigns
+- Reports
+- Dashboard
+- Accounts
+- Contacts
+
+---
 
 ## 📁 Project Structure
 
