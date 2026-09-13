@@ -1,58 +1,143 @@
-# Salesforce DX Project
+# HandsMen Threads – Elevating the Art of Sophistication in Men's Fashion
 
-Salesforce DX is a development approach that brings source-driven development, team collaboration, and continuous integration to the Salesforce Platform. Instead of working directly in an org through a web browser, you work with metadata as source files in a local DX project, track changes in version control, and deploy through automated processes.
+## 📌 Project Overview
 
-This project template gets you started with the tools and structure you need to build Salesforce applications using source control, scratch orgs, and the Salesforce CLI.
+HandsMen Threads is a Salesforce CRM solution designed to manage and automate the operations of a men's fashion business.
 
-## Prerequisites
+The project provides a centralized system for managing customers, products, orders, inventory, and marketing campaigns. Salesforce automation is used to improve order processing, inventory management, customer loyalty, and business operations.
 
-Before you start, make sure you have:
+## 🎯 Objectives
 
-- **Salesforce CLI** - Download from [developer.salesforce.com/tools/salesforcecli](https://developer.salesforce.com/tools/salesforcecli). See [Install Salesforce CLI](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_install_cli.htm) for details.
-- **VS Code with Salesforce Extension Pack** - See [Installation Instructions](https://developer.salesforce.com/docs/platform/sfvscode-extensions/guide/install.html) for details. Includes the Agentforce Vibes extension.
-- **A development org** - Sign up for a free Developer Edition org [here](https://developer.salesforce.com/signup).
-- **Dev Hub enabled** (optional, required to create scratch orgs) - You can enable Dev Hub in your development org under Setup > Dev Hub.  See [Provide Developers Access to Salesforce DX Tools](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_setup_dx_tools.htm).
+- Manage customer information efficiently
+- Manage products and inventory
+- Track customer orders
+- Maintain accurate inventory levels
+- Automate customer loyalty status updates
+- Automate order confirmation notifications
+- Generate low-stock inventory alerts
+- Provide controlled access to users based on their roles and profiles
 
-## Project Structure
+## 🛠️ Technologies Used
 
-Your DX project follows this structure:
+- Salesforce CRM
+- Salesforce Lightning
+- Custom Objects
+- Custom Fields
+- Validation Rules
+- Formula Fields
+- Lookup Relationships
+- Master-Detail Relationship
+- Lightning App
+- Profiles and Roles
+- Permission Sets
+- Salesforce Flows
+- Apex
+- Batch Apex
+- Scheduled Apex
+- Git & GitHub
 
-- **`force-app/main/default/`** - Your metadata source files live in this default package directory. You can configure additional package directories in the `sfdx-project.json` file.
-- **`config/`** - Scratch org definitions and project settings
-- **`scripts/`** - Automation scripts for common tasks
-- **`sfdx-project.json`** - Project manifest that defines package directories, namespace, API version, and other project-level settings
+## 📊 Salesforce Data Model
 
-See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm).
+The project contains the following custom objects:
 
-## Get Started
+- **HandsMen Customer**
+- **HandsMen Product**
+- **HandsMen Order**
+- **Inventory**
+- **Marketing Campaign**
 
-Ready to start developing? The [Get Started with Salesforce DX](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_get_started_dx.htm) guide walks you through your first project, from creating a scratch org to creating a simple Apex class or LWC to deploying your code to a sandbox.
+### Key Relationships
 
-## Common Salesforce CLI Commands
+- Marketing Campaign → HandsMen Customer
+- HandsMen Product → HandsMen Order
+- HandsMen Order → HandsMen Customer
+- Inventory → HandsMen Product
 
-Here are common CLI commands that you'll use the most:
+## ⚙️ Automation
 
-- `sf org login web`: Authorize an org
-- `sf org open`: Open your org in a browser
-- `sf org create scratch`: Create a scratch org
-- `sf project deploy start`: Deploy metadata to your org
-- `sf project retrieve start`: Retrieve metadata from your org
-- `sf template generate <artifact>`: Scaffold new components, such as Apex classes and triggers, LWC components, Lightning apps, and more
-- `sf apex <command>`: Run Apex tests, run anonymous Apex blocks, and view logs
-- `sf data <command>`: Work with test data
-- `sf alias <command>`: Manage org aliases
-- `sf config <command>`: Configure CLI settings
+### 1. Customer Loyalty Automation
 
-## Use Agentforce Vibes to Build Lightning Apps
+A scheduled Salesforce Flow automatically updates customer loyalty status based on total purchases:
 
-Transform your ideas into custom Lightning apps that extend CRM workflows directly in Lightning Experience. Through natural conversations with Agentforce Vibes, implement custom objects and fields, complex business logic, and dynamic UI components. See [Build a Lightning App Using Agentforce Vibes](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/lexapp-overview.html).
+| Total Purchases | Loyalty Status |
+|---|---|
+| Greater than 1000 | Gold |
+| Less than 500 | Bronze |
+| 500 – 1000 | Silver |
 
-## Additional Resources
+### 2. Order Confirmation
 
-- [Agentforce Vibes Developer Guide](https://developer.salesforce.com/docs/platform/einstein-for-devs/guide/einstein-overview.html)
-- [Salesforce CLI Installation Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/)
-- [Salesforce CLI Plugin Development Guide](https://developer.salesforce.com/docs/platform/salesforce-cli-plugin/guide/conceptual-overview.html)
-- [Salesforce VS Code Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
+An automated flow sends an order confirmation notification when an order is confirmed.
 
+### 3. Inventory Stock Alert
+
+A flow is used to identify low-stock inventory and trigger a stock alert.
+
+### 4. Inventory Batch Processing
+
+A Batch Apex and Schedulable Apex process is implemented for inventory management and scheduled execution.
+
+## 🔐 Security and Access
+
+The project uses Salesforce security features including:
+
+- Roles
+- Profiles
+- Permission Sets
+- Object-Level Permissions
+
+A custom **Platform 1** profile was created with appropriate permissions for HandsMen Products and Inventory.
+
+## ✅ Validation Rules
+
+Validation rules are implemented to maintain data accuracy.
+
+Examples include:
+
+- Inventory quantity cannot be less than or equal to zero
+- Customer email must contain `@gmail.com`
+- Order total amount must be greater than zero
+
+## 📧 Email Automation
+
+An order confirmation email template is implemented:
+
+**Order Confirmation Email**
+
+It is used to notify customers when their order has been confirmed.
+
+## 💻 Apex Components
+
+The project includes:
+
+- `InventoryBatchJob`
+- `OrderTriggerHandler`
+- `OrderTrigger`
+
+These components support inventory processing and order-related automation.
+
+## 📁 Project Structure
+
+```text
+HandsMenThreads/
+│
+├── force-app/
+│   └── main/
+│       └── default/
+│           ├── applications/
+│           ├── classes/
+│           ├── flows/
+│           ├── layouts/
+│           ├── objects/
+│           ├── permissionsets/
+│           ├── profiles/
+│           ├── roles/
+│           ├── tabs/
+│           └── triggers/
+│
+├── config/
+├── scripts/
+├── .vscode/
+├── package.json
+├── sfdx-project.json
+└── README.md
